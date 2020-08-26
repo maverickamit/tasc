@@ -26,3 +26,20 @@ main {
   cursor: pointer;
   vertical-align: middle;
 }
+/* A link that has not been visited */
+.navbar a:link {
+  color: white;
+  text-decoration: none;
+}
+/* A link that has been visited */
+.navbar a:visited {
+  color: white;
+}
+/* A link that is hovered on */
+.navbar a:hover {
+  color: whitesmoke;
+}
+/* A link that is selected */
+.navbar a:active {
+  color: blue;
+}
