@@ -10,10 +10,13 @@ import UserLogin from "./components/login/login.jsx";
 import SignUp from "./components/registration/registration.jsx";
 
 render(
-  <Router>
-    <UserLogin path="/"></UserLogin>
-    <SignUp path="/signup"></SignUp>
-  </Router>,
+  <div>
+    <NavBar />
+    <Router>
+      <UserLogin path="/"></UserLogin>
+      <SignUp path="/signup"></SignUp>
+    </Router>
+  </div>,
   document.getElementById("root")
 );
 
