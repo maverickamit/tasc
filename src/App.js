@@ -1,14 +1,10 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import UserLogin from "./components/login/login.jsx";
+
+import { Router, Link } from "@reach/router";
 
 function App() {
-  return (
-    <div className="App">
-      <UserLogin></UserLogin>
-    </div>
-  );
+  return <div className="App"></div>;
 }
 
 export default App;

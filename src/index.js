@@ -4,12 +4,16 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import NavBar from "./components/navbar/navbar.jsx";
+import { render } from "react-dom";
+import { Router, Link } from "@reach/router";
+import UserLogin from "./components/login/login.jsx";
+import SignUp from "./components/registration/registration.jsx";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <NavBar />
-    <App />
-  </React.StrictMode>,
+render(
+  <Router>
+    <UserLogin path="/"></UserLogin>
+    <SignUp path="/signup"></SignUp>
+  </Router>,
   document.getElementById("root")
 );
 
