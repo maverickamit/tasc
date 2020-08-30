@@ -82,8 +82,6 @@ export default function SignUp() {
                 })}
                 autoFocus
               />
-            </Grid>
-            <Grid item xs={12}>
               {errors.firstName && (
                 <Alert color="warning">Please enter your name </Alert>
               )}
