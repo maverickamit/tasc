@@ -81,11 +81,13 @@ function UserLogin() {
               autoComplete="email"
               inputRef={register({
                 required: true,
-                maxLength: 20,
+                pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
               })}
               autoFocus
             />
-            {errors.email && <Alert color="warning"></Alert>}
+            {errors.email && (
+              <Alert color="warning">Please enter a valid email address</Alert>
+            )}
             <TextField
               variant="outlined"
               margin="normal"
