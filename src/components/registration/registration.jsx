@@ -12,6 +12,8 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import { useForm } from "react-hook-form";
+import Alert from "@material-ui/lab/Alert";
 
 function Copyright() {
   return (
@@ -48,7 +50,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const classes = useStyles();
-
+  const { register, handleSubmit, watch, errors } = useForm();
+  const onFormSubmit = (data) => console.log(data);
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -59,9 +62,13 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form
+          className={classes.form}
+          noValidate
+          onSubmit={handleSubmit(onFormSubmit)}
+        >
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
                 autoComplete="fname"
                 name="firstName"
@@ -69,20 +76,17 @@ export default function SignUp() {
                 required
                 fullWidth
                 id="firstName"
-                label="First Name"
+                label="Name"
+                inputRef={register({
+                  required: true,
+                })}
                 autoFocus
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-              />
+            <Grid item xs={12}>
+              {errors.firstName && (
+                <Alert color="warning">Please enter your name </Alert>
+              )}
             </Grid>
             <Grid item xs={12}>
               <TextField
@@ -93,7 +97,16 @@ export default function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                inputRef={register({
+                  required: true,
+                  pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                })}
               />
+              {errors.email && (
+                <Alert color="warning">
+                  Please enter a valid email address
+                </Alert>
+              )}
             </Grid>
             <Grid item xs={12}>
               <TextField
@@ -104,8 +117,18 @@ export default function SignUp() {
                 label="Password"
                 type="password"
                 id="password"
+                inputRef={register({
+                  required: true,
+                  maxLength: 15,
+                  minLength: 8,
+                })}
                 autoComplete="current-password"
               />
+              {errors.password && (
+                <Alert color="warning">
+                  Password should have between 8 to 15 characters
+                </Alert>
+              )}
             </Grid>
           </Grid>
           <Button
@@ -119,7 +142,7 @@ export default function SignUp() {
           </Button>
           <Grid container justify="center">
             <Grid item>
-              <Link href="/" Home variant="body2">
+              <Link href="/" variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>
