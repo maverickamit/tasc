@@ -12,7 +12,7 @@ const NavBar = () => (
       <Link to="/signup">Sign Up</Link>
     </div>
     <div className="navbar__item">
-      <Link to="#">Project Link</Link>
+      <a href="https://github.com/maverickamit/tasc">Project Link</a>
     </div>
   </header>
 );
