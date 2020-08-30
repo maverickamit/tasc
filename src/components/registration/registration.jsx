@@ -14,6 +14,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { useForm } from "react-hook-form";
 import Alert from "@material-ui/lab/Alert";
+const axios = require("axios");
 
 function Copyright() {
   return (
@@ -49,9 +50,22 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
+  const url = process.env.REACT_APP_URL;
   const classes = useStyles();
   const { register, handleSubmit, watch, errors } = useForm();
-  const onFormSubmit = (data) => console.log(data);
+  const onFormSubmit = (data) => {
+    axios
+      .post(url + "/users", {
+        ...data,
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -71,18 +85,18 @@ export default function SignUp() {
             <Grid item xs={12}>
               <TextField
                 autoComplete="fname"
-                name="firstName"
+                name="name"
                 variant="outlined"
                 required
                 fullWidth
-                id="firstName"
+                id="name"
                 label="Name"
                 inputRef={register({
                   required: true,
                 })}
                 autoFocus
               />
-              {errors.firstName && (
+              {errors.name && (
                 <Alert color="warning">Please enter your name </Alert>
               )}
             </Grid>

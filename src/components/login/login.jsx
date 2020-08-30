@@ -52,7 +52,7 @@ function UserLogin() {
   const classes = useStyles();
   const { register, handleSubmit, watch, errors } = useForm();
   const onSubmit = (data) => console.log(data);
-  console.log(watch("email"));
+
   return (
     <div class="login">
       <Container component="main" maxWidth="xs">
