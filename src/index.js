@@ -8,6 +8,7 @@ import { render } from "react-dom";
 import { Router, Link } from "@reach/router";
 import UserLogin from "./components/login/login.jsx";
 import SignUp from "./components/registration/registration.jsx";
+import DashBoard from "./components/dashboard/dashboard.jsx";
 
 render(
   <div>
@@ -15,6 +16,7 @@ render(
     <Router>
       <UserLogin path="/"></UserLogin>
       <SignUp path="/signup"></SignUp>
+      <DashBoard path="/dashboard"></DashBoard>
     </Router>
   </div>,
   document.getElementById("root")
