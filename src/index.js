@@ -9,6 +9,7 @@ import { Router, Link } from "@reach/router";
 import UserLogin from "./components/login/login.jsx";
 import SignUp from "./components/registration/registration.jsx";
 import DashBoard from "./components/dashboard/dashboard.jsx";
+import ForgotPassword from "./components/forgotPassword/forgotPasword.jsx";
 
 render(
   <div>
@@ -17,6 +18,7 @@ render(
       <UserLogin path="/"></UserLogin>
       <SignUp path="/signup"></SignUp>
       <DashBoard path="/dashboard"></DashBoard>
+      <ForgotPassword path="/forgot-password"></ForgotPassword>
     </Router>
   </div>,
   document.getElementById("root")
